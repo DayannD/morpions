@@ -13,7 +13,6 @@ public class Main {
         boolean turn = true;
 
         while(player1 == null){
-
             try{
                 System.out.println("Player 1, choississez votre signe X ou O");
                 player1 = scanner.nextLine();
@@ -70,7 +69,5 @@ public class Main {
                 }
             }
         }
-
-
     }
 }

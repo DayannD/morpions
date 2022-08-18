@@ -4,12 +4,9 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class Scorpion {
-    String[][] tabScore = {
-            {"1", "2", "3"},
-            {"4", "5", "6"},
-            {"7", "8", "9"}
-    };
 
+    //List<String> listToFind = Arrays.asList("1","2","3","4","5","6","7","8","9");
+    int tour = 0;
     List<List<String>> tabScoreList = new ArrayList<>();
     List<String> tabScoreList1 = Arrays.asList("1", "2", "3");
     List<String> tabScoreList2 = Arrays.asList("4", "5", "6");
@@ -20,14 +17,6 @@ public class Scorpion {
         this.tabScoreList.add(tabScoreList1);
         this.tabScoreList.add(tabScoreList2);
         this.tabScoreList.add(tabScoreList3);
-    }
-
-    public String[][] getTabScore() {
-        return tabScore;
-    }
-
-    public void setTabScore(String[][] tabScore) {
-        this.tabScore = tabScore;
     }
 
     public List<List<String>> getTabScoreList() {
@@ -53,9 +42,34 @@ public class Scorpion {
                 }
             }
         }
+        if (!winner(player)){
+            this.tour++;
+            equalité();
+        }
+
         return this.winner(player);
     }
 
+    public void equalité(){
+        if (this.tour == 9){
+            throw new RuntimeException("C'est une équalité !! bien joué !");
+        }
+/*        boolean itsContinue = true;
+        for (List<String> list:
+             tabScoreList) {
+            for (int i=0; i < list.size(); i++){
+                itsContinue = list.get(i).matches("[0-9]");
+                if (!itsContinue){
+                    throw new RuntimeException("C'est une équalité !! bien joué !");
+                }
+            }
+        }*/
+/*        boolean itsOk = tabScoreList1.stream().anyMatch(list -> list.contains("1"));
+        //boolean itsPresent = tabScoreList1.contains(listToFind) || tabScoreList2.contains(listToFind) || tabScoreList2.contains(listToFind);
+        if (itsOk == true){
+            throw new RuntimeException("C'est une équalité !! bien joué !");
+        }*/
+    }
 
     public boolean winner(String player){
         List<String> winner = Arrays.asList(player,player,player);
